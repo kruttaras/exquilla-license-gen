@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ExQuilla license gen</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">ExQuilla License Gen</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main">
+    <div class="container">
+      <h1 class="text-center">License Gen</h1>
+      <div class="content">
+      <div class="row">
+        <div class="col-md-5">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Email</label>
+              <div class="col-sm-8">
+                <input type="email" id="email" class="form-control" id="inputEmail3" placeholder="example@mail.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Exparetion Date</label>
+              <div class="col-sm-8">
+                <input type="text" id="exp-date" class="form-control" data-provide="datepicker" data-date-start-date="+1y" data-date-format="yyyy-mm-dd" data-auto-close="true" placeholder="2017-12-31">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-2">
+          <button type="button" id="generate-btn" class="btn btn-lg btn-success">Generate</button>
+       </div>
+        <div class="col-md-5">
+          <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon1">License</span>
+            <input type="text" id="lic" class="form-control" placeholder="License here" aria-describedby="sizing-addon1">
+          </div>
+      </div>
+    </div>
+      <div class="footer">
+      <hr>
+      <footer>
+        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+      </footer>
+    </div>
+    </div>
+  </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/js/jquery.md5.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-datepicker.js"></script>
+    <script>
+       $("#generate-btn").click(function() {
+         var email = $("#email").val();
+         var expDate = $("#exp-date").val();
+         $("#lic").empty();
+         var part = "EX1,"+email+","+expDate+",356B4B5C";
+         $("#lic").val(part + $.md5(part));
+      });
+    </script>
+</body>
+</html>
