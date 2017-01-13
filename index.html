@@ -53,7 +53,7 @@
             <div class="form-group">
               <label class="col-sm-4 control-label">Exparetion Date</label>
               <div class="col-sm-8">
-                <input type="text" id="exp-date" class="form-control" data-provide="datepicker" data-date-start-date="+1y" data-date-format="yyyy-mm-dd" data-auto-close="true" placeholder="2017-12-31">
+                <input type="text" id="exp-date" class="form-control" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-auto-close="true" placeholder="2017-12-31">
               </div>
             </div>
           </form>
@@ -82,11 +82,10 @@
     <script src="js/bootstrap-datepicker.js"></script>
     <script>
        $("#generate-btn").click(function() {
-         var email = $("#email").val();
-         var expDate = $("#exp-date").val();
+         var args = [];
+         args.push("EX1", $("#email").val(), $("#exp-date").val(), "356B4B5C");
          $("#lic").empty();
-         var part = "EX1,"+email+","+expDate+",356B4B5C";
-         $("#lic").val(part + $.md5(part));
+         $("#lic").val([args.slice(0,3).join(),$.md5(args.join())].join());
       });
     </script>
 </body>
